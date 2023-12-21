@@ -1,5 +1,6 @@
 import { useState, type FormEvent } from "react";
 import { type Field, type Json } from "../types";
+import { getData } from "../utils/get-data";
 import { useFields } from "./useFields";
 
 export function useJson({
@@ -10,9 +11,8 @@ export function useJson({
   defaultJson: Json[];
 }) {
   const [json, setJson] = useState<Json[]>(defaultJson);
-  const { fields, addField, changeFieldName, changeFieldType } = useFields({
-    defaultFields,
-  });
+  const { fields, addField, removeField, changeFieldName, changeFieldType } =
+    useFields({ defaultFields });
 
   const generateJson = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -33,13 +33,16 @@ export function useJson({
       return;
     }
 
-    const newJson: Json[] = Array.from({ length: +amount }).map((_, index) => {
-      const aux: Json = {};
-      fields.forEach((field) => {
-        aux[field.name] = field.type === "Index" ? index : getData(field.type);
-      });
-      return aux;
-    });
+    const emptyArray = Array.from({ length: +amount });
+    const newJson = emptyArray.map((_, idx) =>
+      fields.reduce(
+        (acc, { name, type }) => ({
+          ...acc,
+          [name]: type === "Index" ? idx : getData(type),
+        }),
+        {}
+      )
+    );
 
     setJson(newJson);
   };
@@ -52,6 +55,7 @@ export function useJson({
     fieldsHooks: {
       fields,
       addField,
+      removeField,
       changeFieldName,
       changeFieldType,
     },

@@ -1,21 +1,24 @@
 import { useEffect, useRef } from "react";
 import { TYPES } from "../config/const";
 import { type FieldType, type IdType } from "../types";
+import TrashcanIcon from "./icons/trashcan-icon";
 
 interface DataInputProps {
   id: IdType;
-  changeName: (id: IdType, name: string) => void;
-  changeType: (id: IdType, type: FieldType) => void;
   name: string;
   type: FieldType;
+  removeField: () => void;
+  changeName: (id: IdType, name: string) => void;
+  changeType: (id: IdType, type: FieldType) => void;
 }
 
 export default function DataInput({
   id,
-  changeName,
-  changeType,
   name,
   type,
+  removeField,
+  changeName,
+  changeType,
 }: DataInputProps) {
   const inputRef = useRef<HTMLInputElement | null>(null);
 
@@ -52,6 +55,16 @@ export default function DataInput({
           </option>
         ))}
       </select>
+      <button
+        type="button"
+        onClick={removeField}
+        className="grid p-1 text-sm transition-colors rounded bg-red-700/60 hover:bg-red-700 place-items-center"
+      >
+        <TrashcanIcon
+          width={18}
+          height={18}
+        />
+      </button>
     </div>
   );
 }

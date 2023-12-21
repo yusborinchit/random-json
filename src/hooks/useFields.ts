@@ -11,6 +11,10 @@ export function useFields({ defaultFields }: { defaultFields: Field[] }) {
     ]);
   };
 
+  const removeField = (id: IdType) => {
+    setFields((oldFields) => [...oldFields].filter((field) => field.id !== id));
+  };
+
   const changeFieldName = (id: IdType, name: string) => {
     const draft = [...fields];
 
@@ -29,5 +33,5 @@ export function useFields({ defaultFields }: { defaultFields: Field[] }) {
     setFields(draft);
   };
 
-  return { fields, addField, changeFieldName, changeFieldType };
+  return { fields, addField, removeField, changeFieldName, changeFieldType };
 }

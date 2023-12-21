@@ -4,18 +4,20 @@ import DataInput from "./data-input";
 
 interface JsonFormProps {
   fields: Field[];
-  generateJson: (event: FormEvent<HTMLFormElement>) => void;
+  addField: () => void;
+  removeField: (id: IdType) => void;
   changeFieldName: (id: IdType, name: string) => void;
   changeFieldType: (id: IdType, name: FieldType) => void;
-  addField: () => void;
+  generateJson: (event: FormEvent<HTMLFormElement>) => void;
 }
 
 export default function JsonForm({
   fields,
-  generateJson,
+  addField,
+  removeField,
   changeFieldName,
   changeFieldType,
-  addField,
+  generateJson,
 }: JsonFormProps) {
   return (
     <form
@@ -38,14 +40,15 @@ export default function JsonForm({
       </div>
 
       <div className="flex flex-col gap-2">
-        {fields.map((field) => (
+        {fields.map(({ id, name, type }) => (
           <DataInput
-            key={field.id}
-            id={field.id}
+            key={id}
+            id={id}
+            name={name}
+            type={type}
+            removeField={() => removeField(id)}
             changeName={changeFieldName}
             changeType={changeFieldType}
-            name={field.name}
-            type={field.type}
           />
         ))}
       </div>

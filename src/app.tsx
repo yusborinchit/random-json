@@ -16,7 +16,8 @@ export default function App() {
     defaultJson: DEFAULT_JSON,
   });
 
-  const { fields, addField, changeFieldName, changeFieldType } = fieldsHooks;
+  const { fields, addField, removeField, changeFieldName, changeFieldType } =
+    fieldsHooks;
   const { json, generateJson, copyJsonToClipboard } = jsonHooks;
 
   return (
@@ -27,9 +28,10 @@ export default function App() {
           <h2 className="text-xs text-zinc-400">Your input:</h2>
           <JsonForm
             fields={fields}
+            addField={addField}
+            removeField={removeField}
             changeFieldName={changeFieldName}
             changeFieldType={changeFieldType}
-            addField={addField}
             generateJson={generateJson}
           />
         </section>
