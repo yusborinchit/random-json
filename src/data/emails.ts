@@ -1,7 +1,7 @@
 import { getRandomNumber } from "../utils/get-random-number";
 import { getRandomValueFromArray } from "../utils/get-random-value-from-array";
-import { FIRST_NAMES } from "./get-random-first-name";
-import { LAST_NAMES } from "./get-random-last-name";
+import { FIRST_NAMES } from "./first-names";
+import { LAST_NAMES } from "./last-names";
 
 const DOMAINS = ["gmail.com", "yahoo.com", "hotmail.com", "outlook.com"];
 

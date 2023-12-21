@@ -1,9 +1,9 @@
-import { getRandomDate } from "../data/get-random-date";
-import { getRandomEmail } from "../data/get-random-email";
-import { getRandomFirstName } from "../data/get-random-first-name";
-import { getRandomGender } from "../data/get-random-gender";
-import { getRandomLastName } from "../data/get-random-last-name";
-import { getRandomPhone } from "../data/get-random-phone";
+import { getRandomDate } from "../data/dates";
+import { getRandomEmail } from "../data/emails";
+import { getRandomFirstName } from "../data/first-names";
+import { getRandomGender } from "../data/genders";
+import { getRandomLastName } from "../data/last-names";
+import { getRandomPhone } from "../data/phones";
 import { type FieldType } from "../types";
 
 const DATA_HANDLERS: { [type in FieldType]: () => string } = {
