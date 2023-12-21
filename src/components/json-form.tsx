@@ -4,31 +4,36 @@ import DataInput from "./data-input";
 
 interface JsonFormProps {
   fields: Field[];
-  handleGenerateJson: (event: FormEvent<HTMLFormElement>) => void;
-  handleChangeName: (id: IdType, name: string) => void;
-  handleChangeType: (id: IdType, name: FieldType) => void;
-  handleAddField: () => void;
+  generateJson: (event: FormEvent<HTMLFormElement>) => void;
+  changeFieldName: (id: IdType, name: string) => void;
+  changeFieldType: (id: IdType, name: FieldType) => void;
+  addField: () => void;
 }
 
 export default function JsonForm({
   fields,
-  handleGenerateJson,
-  handleChangeName,
-  handleChangeType,
-  handleAddField,
+  generateJson,
+  changeFieldName,
+  changeFieldType,
+  addField,
 }: JsonFormProps) {
   return (
     <form
-      onSubmit={handleGenerateJson}
+      onSubmit={generateJson}
       className="flex flex-col gap-8 p-4 border rounded bg-zinc-800 border-zinc-700"
     >
       <div className="flex items-center gap-2">
-        <label htmlFor="amount">Amount:</label>
+        <label
+          htmlFor="amount"
+          className="text-sm"
+        >
+          Amount:
+        </label>
         <input
           type="number"
           id="amount"
           name="amount"
-          className="flex-1 px-2 py-1 rounded border-zinc-600 bg-zinc-700"
+          className="flex-1 px-2 py-1 text-sm rounded border-zinc-600 bg-zinc-700"
         />
       </div>
 
@@ -37,8 +42,8 @@ export default function JsonForm({
           <DataInput
             key={field.id}
             id={field.id}
-            changeName={handleChangeName}
-            changeType={handleChangeType}
+            changeName={changeFieldName}
+            changeType={changeFieldType}
             name={field.name}
             type={field.type}
           />
@@ -47,7 +52,7 @@ export default function JsonForm({
       <div className="flex gap-2 text-sm">
         <button
           type="button"
-          onClick={handleAddField}
+          onClick={addField}
           className="grid px-4 py-2 bg-yellow-600 rounded place-items-center w-fit"
         >
           + Add field
