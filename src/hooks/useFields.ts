@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { UUID_TYPE } from "../config/const";
 import { type Field, type FieldType, type IdType } from "../types";
 
 export function useFields({ defaultFields }: { defaultFields: Field[] }) {
@@ -7,7 +8,7 @@ export function useFields({ defaultFields }: { defaultFields: Field[] }) {
   const addField = () => {
     setFields((oldFields) => [
       ...oldFields,
-      { id: crypto.randomUUID(), name: "id", type: "Uuid" },
+      { id: crypto.randomUUID(), name: "id", type: UUID_TYPE },
     ]);
   };
 

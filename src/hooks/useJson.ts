@@ -1,4 +1,5 @@
 import { useState, type FormEvent } from "react";
+import { INDEX_TYPE } from "../config/const";
 import { type Field, type Json } from "../types";
 import { getData } from "../utils/get-data";
 import { useFields } from "./useFields";
@@ -38,7 +39,7 @@ export function useJson({
       fields.reduce(
         (acc, { name, type }) => ({
           ...acc,
-          [name]: type === "Index" ? idx : getData(type),
+          [name]: type === INDEX_TYPE ? idx : getData(type),
         }),
         {}
       )

@@ -1,15 +1,15 @@
 import Header from "./components/header";
 import JsonForm from "./components/json-form";
 import JsonResult from "./components/json-result";
+import { FIRST_NAME_TYPE, LAST_NAME_TYPE, UUID_TYPE } from "./config/const";
 import { useJson } from "./hooks/useJson";
-import { type Field, type Json } from "./types";
 
-const DEFAULT_JSON: Json[] = [{ id: crypto.randomUUID() }];
+const DEFAULT_JSON = [{ id: crypto.randomUUID() }];
 
-const DEFAULT_FIELDS: Field[] = [
-  { id: crypto.randomUUID(), name: "id", type: "Uuid" },
-  { id: crypto.randomUUID(), name: "first_name", type: "First Name" },
-  { id: crypto.randomUUID(), name: "last_name", type: "Last Name" },
+const DEFAULT_FIELDS = [
+  { id: crypto.randomUUID(), name: "id", type: UUID_TYPE },
+  { id: crypto.randomUUID(), name: "first_name", type: FIRST_NAME_TYPE },
+  { id: crypto.randomUUID(), name: "last_name", type: LAST_NAME_TYPE },
 ];
 
 export default function App() {
