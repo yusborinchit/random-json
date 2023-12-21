@@ -8,6 +8,8 @@ const DEFAULT_JSON: Json[] = [{ id: crypto.randomUUID() }];
 
 const DEFAULT_FIELDS: Field[] = [
   { id: crypto.randomUUID(), name: "id", type: "Uuid" },
+  { id: crypto.randomUUID(), name: "first_name", type: "First Name" },
+  { id: crypto.randomUUID(), name: "last_name", type: "Last Name" },
 ];
 
 export default function App() {

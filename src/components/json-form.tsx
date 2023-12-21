@@ -35,6 +35,9 @@ export default function JsonForm({
           type="number"
           id="amount"
           name="amount"
+          min={1}
+          defaultValue={1}
+          max={100}
           className="flex-1 px-2 py-1 text-sm rounded border-zinc-600 bg-zinc-700"
         />
       </div>
