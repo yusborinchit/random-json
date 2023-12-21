@@ -19,7 +19,6 @@ export default function App() {
     defaultFields: DEFAULT_FIELDS,
     defaultJson: DEFAULT_JSON,
   });
-  ``;
 
   const { fields, addField, removeField, changeFieldName, changeFieldType } =
     fieldsHooks;
