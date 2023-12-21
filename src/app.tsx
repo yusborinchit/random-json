@@ -4,12 +4,14 @@ import JsonResult from "./components/json-result";
 import { FIRST_NAME_TYPE, LAST_NAME_TYPE, UUID_TYPE } from "./config/const";
 import { useJson } from "./hooks/useJson";
 
-const DEFAULT_JSON = [{ id: crypto.randomUUID() }];
+const DEFAULT_JSON = [
+  { id: crypto.randomUUID(), firstName: "Santiago", lastName: "Garcia" },
+];
 
 const DEFAULT_FIELDS = [
   { id: crypto.randomUUID(), name: "id", type: UUID_TYPE },
-  { id: crypto.randomUUID(), name: "first_name", type: FIRST_NAME_TYPE },
-  { id: crypto.randomUUID(), name: "last_name", type: LAST_NAME_TYPE },
+  { id: crypto.randomUUID(), name: "firstName", type: FIRST_NAME_TYPE },
+  { id: crypto.randomUUID(), name: "lastName", type: LAST_NAME_TYPE },
 ];
 
 export default function App() {
@@ -17,6 +19,7 @@ export default function App() {
     defaultFields: DEFAULT_FIELDS,
     defaultJson: DEFAULT_JSON,
   });
+  ``;
 
   const { fields, addField, removeField, changeFieldName, changeFieldType } =
     fieldsHooks;
