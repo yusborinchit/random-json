@@ -44,6 +44,10 @@ export function useJson({
     setJson(newJson);
   };
 
+  const copyJsonToClipboard = () => {
+    navigator.clipboard.writeText(JSON.stringify(json, null, 4));
+  };
+
   return {
     fieldsHooks: {
       fields,
@@ -54,6 +58,7 @@ export function useJson({
     jsonHooks: {
       json,
       generateJson,
+      copyJsonToClipboard,
     },
   };
 }

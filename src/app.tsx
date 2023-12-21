@@ -17,7 +17,7 @@ export default function App() {
   });
 
   const { fields, addField, changeFieldName, changeFieldType } = fieldsHooks;
-  const { json, generateJson } = jsonHooks;
+  const { json, generateJson, copyJsonToClipboard } = jsonHooks;
 
   return (
     <>
@@ -35,7 +35,10 @@ export default function App() {
         </section>
         <section className="flex flex-col gap-2">
           <h2 className="text-xs text-zinc-400">Your output:</h2>
-          <JsonResult json={json} />
+          <JsonResult
+            json={json}
+            copyJsonToClipboard={copyJsonToClipboard}
+          />
         </section>
       </main>
     </>
