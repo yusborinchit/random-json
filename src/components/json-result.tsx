@@ -1,7 +1,7 @@
 import { type Json } from "../types";
 
 interface JsonResultProps {
-  json: Json;
+  json: Json[];
 }
 
 export default function JsonResult({ json }: JsonResultProps) {
