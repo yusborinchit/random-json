@@ -30,27 +30,24 @@ export default function DataInput({
   }, []);
 
   return (
-    <div className="flex items-center gap-2 font-mono ">
+    <div className="flex flex-col gap-2 font-mono sm:flex-row sm:items-center">
       <input
         type="text"
         ref={inputRef}
         name={name}
         value={name}
         onChange={(event) => changeName(id, event.target.value)}
-        className="flex-1 px-2 text-sm py-1 border-zinc-600 max-w-[250px] rounded bg-zinc-700"
+        className="w-full flex-1 rounded border-zinc-600 bg-zinc-700 px-2 py-1 text-sm sm:max-w-[250px]"
       />
-      <span>:</span>
+      <span className="hidden sm:flex">:</span>
       <select
         name={`${name}-type`}
         value={type}
         onChange={(event) => changeType(id, event.target.value as FieldType)}
-        className="flex-1 px-2 py-1 text-sm rounded border-zinc-600 bg-zinc-700"
+        className="flex-1 rounded border-zinc-600 bg-zinc-700 px-2 py-1 text-sm"
       >
         {TYPES.map((type, index) => (
-          <option
-            key={index}
-            value={type}
-          >
+          <option key={index} value={type}>
             {type}
           </option>
         ))}
@@ -58,12 +55,9 @@ export default function DataInput({
       <button
         type="button"
         onClick={removeField}
-        className="grid p-1 text-sm transition-colors rounded bg-red-700/60 hover:bg-red-700 place-items-center"
+        className="grid place-items-center rounded bg-red-700/60 p-1 text-sm transition-colors hover:bg-red-700"
       >
-        <TrashcanIcon
-          width={18}
-          height={18}
-        />
+        <TrashcanIcon width={18} height={18} />
       </button>
     </div>
   );

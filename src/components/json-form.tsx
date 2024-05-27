@@ -22,13 +22,10 @@ export default function JsonForm({
   return (
     <form
       onSubmit={generateJson}
-      className="flex flex-col gap-8 p-4 border rounded bg-zinc-800 border-zinc-700"
+      className="flex flex-col gap-8 rounded border border-zinc-700 bg-zinc-800 p-4"
     >
       <div className="flex items-center gap-2">
-        <label
-          htmlFor="amount"
-          className="text-sm"
-        >
+        <label htmlFor="amount" className="text-sm">
           Amount:
         </label>
         <input
@@ -38,11 +35,11 @@ export default function JsonForm({
           min={1}
           defaultValue={1}
           max={100}
-          className="flex-1 px-2 py-1 text-sm rounded border-zinc-600 bg-zinc-700"
+          className="flex-1 rounded border-zinc-600 bg-zinc-700 px-2 py-1 text-sm"
         />
       </div>
 
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-6 sm:gap-2">
         {fields.map(({ id, name, type }) => (
           <DataInput
             key={id}
@@ -59,15 +56,12 @@ export default function JsonForm({
         <button
           type="button"
           onClick={addField}
-          className="grid px-4 py-2 bg-yellow-600 rounded place-items-center w-fit"
+          className="grid w-fit place-items-center rounded bg-yellow-600 px-4 py-2 transition-colors hover:bg-yellow-700"
         >
           + Add field
         </button>
-        <button
-          type="submit"
-          className="p-2 underline w-fit"
-        >
-          Generate
+        <button type="submit" className="w-fit p-2 underline">
+          Generate JSON
         </button>
       </div>
     </form>

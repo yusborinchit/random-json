@@ -27,7 +27,7 @@ export default function App() {
   return (
     <>
       <Header />
-      <main className="flex flex-col max-w-xl gap-8 p-4 mx-auto">
+      <main className="mx-auto flex max-w-xl flex-col gap-8 px-4">
         <section className="flex flex-col gap-2">
           <h2 className="text-xs text-zinc-400">Your input:</h2>
           <JsonForm
@@ -41,10 +41,7 @@ export default function App() {
         </section>
         <section className="flex flex-col gap-2">
           <h2 className="text-xs text-zinc-400">Your output:</h2>
-          <JsonResult
-            json={json}
-            copyJsonToClipboard={copyJsonToClipboard}
-          />
+          <JsonResult json={json} copyJsonToClipboard={copyJsonToClipboard} />
         </section>
       </main>
     </>
